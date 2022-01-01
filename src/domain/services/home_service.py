@@ -1,9 +1,12 @@
-class HomeService:
-    def __init__(self):
-        pass
+# from ...infrastructure import HomeRepository
 
-    def getHomes():
-        pass
+
+class HomeService:
+    # def __init__(self, homeRepository: HomeRepository):
+    #     self.homeRepository = homeRepository
+
+    # def getHomes(self):
+    #     self.homeRepository.getHomes()
 
     def getHome(homeId: str):
         pass

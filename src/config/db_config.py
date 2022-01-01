@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 import os
 
+load_dotenv()
+
 
 class DBConfig(object):
     name = os.getenv('POSTGRES_DATABASE')
