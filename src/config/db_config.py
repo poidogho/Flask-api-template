@@ -3,6 +3,8 @@ import os
 
 load_dotenv()
 
+jwtSecret = os.getenv('JWTSECRET')
+
 
 class DBConfig(object):
     name = os.getenv('POSTGRES_DATABASE')

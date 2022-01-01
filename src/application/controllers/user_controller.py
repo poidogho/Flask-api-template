@@ -16,5 +16,8 @@ class UserController(Resource):
         users = self.userRepository.getUsers()
         return {'users': users}
 
+    def post(self):
+        return {'user': 'new user'}
+
 
 api.add_resource(UserController, '/users')

@@ -2,8 +2,9 @@ from ..db_models import UserDataModel
 
 
 class UserRepository:
-    def createUser():
-        pass
+    def createUser(**user):
+        newUser = UserDataModel.add(user)
+        return newUser
 
     def getUser(self, userId: str):
         user = UserDataModel.query.get(userId)

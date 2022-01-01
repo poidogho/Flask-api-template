@@ -3,12 +3,12 @@ from sqlalchemy.sql.schema import ForeignKey
 from dataclasses import dataclass
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer, Boolean
-Base = declarative_base()
+from ...application import db
 
 
 @dataclass
-class HomeDataModel(Base):
-    __tablename__ = 'home'
+class HomeDataModel(db.Model):
+    __tablename__ = 'Home'
     id = Column(String, primary_key=True, nullable=False)
     authorId = Column(String, ForeignKey('user.id'), nullable=False)
     name = Column(nullable=False)
@@ -18,24 +18,15 @@ class HomeDataModel(Base):
     description = Column(String, nullable=False)
     approved = Column(Boolean, nullable=True)
 
-    def fromDomain():
-        pass
+    def __repr__(self) -> str:
+        return f'<Home {self.name}>'
 
-    def toDomain():
-        pass
-
-
-# class Home(BaseModel):
-#     __tablename__ = 'home'
-#     id: str
-#     authorId: User
-#     name: str
-#     price: int
-#     address: str
-#     sqrFtSize: int
-#     description: str
-#     approved: bool
-#     homeImages: List[HomeImage]
-
-#     class Config:
-#         orm_mode = True
+    def toDomain(self):
+        return{
+            'id': self.id.hex,
+            'name': self.name,
+            'price': self.price,
+            'address': self.address,
+            'sqrFtSize': self.sqrFtSize,
+            'description': self.description
+        }
