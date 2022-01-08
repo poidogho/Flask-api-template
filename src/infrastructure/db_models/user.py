@@ -26,6 +26,23 @@ class UserDataModel(db.Model):
     def __repr__(self) -> str:
         return f'<User {self.email}>'
 
+    def before_save(self, *args, **kwargs):
+        print('attemp saving user')
+
+    def after_save(self, *args, **kwargs):
+        print('uSER sAVED')
+
+    def save(self, commit=True):
+        self.before_save()
+        db.session.add(self)
+        if commit:
+            try:
+                db.session.commit()
+            except Exception as e:
+                db.session.rollback()
+                raise e
+        self.after_save()
+
     def to_json(self):
         return {
             'id': self.id.hex,
