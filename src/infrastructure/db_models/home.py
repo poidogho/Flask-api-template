@@ -10,7 +10,7 @@ from ...application import db
 class HomeDataModel(db.Model):
     __tablename__ = 'Home'
     id = Column(String, primary_key=True, nullable=False)
-    authorId = Column(String, ForeignKey('user.id'), nullable=False)
+    authorId = Column(String, ForeignKey('User.id'), nullable=False)
     name = Column(nullable=False)
     price = Column(Integer, nullable=False)
     address = Column(String, nullable=False)
